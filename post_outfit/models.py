@@ -15,7 +15,7 @@ class Account(models.Model):
         )
 
     # 自己紹介文
-    account_introduction = models.TextField(
+    account_intro = models.TextField(
         blank=True,
         null=True,
         max_length=400,
@@ -23,3 +23,18 @@ class Account(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Flag(models.Model):
+    flag_name = models.CharField(max_length=30)
+    flag_image =  models.ImageField(upload_to="flag_image")
+    flag_start_date = models.DateField()
+    flag_end_date = models.DateField()
+
+
+class Outfit(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    flag = models.ForeignKey(Flag, on_delete=models.CASCADE)
+    outfit_photo = models.ImageField(upload_to="outfit_photo")
+    outfit_desc = models.CharField(max_length=400)
+    outfit_good = models.IntegerField(default=0)
