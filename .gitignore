@@ -4,3 +4,4 @@ venv
 __pycache__/
 db-volumes/
 db.sqlite3
+post_outfit/migrations

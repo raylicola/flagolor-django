@@ -77,8 +77,9 @@ header p{
 #main{
     padding-left: 10px;
 }
-h2{
-margin:20px 0;
+h1{
+    margin:30px 20px;
+    font-size: 30px;
 }
 header{
     display:flex;
