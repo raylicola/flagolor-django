@@ -15,24 +15,16 @@
         </div>
         <div class="user_state">
             {% if user.is_authenticated %}
-            <p>{{user.username}}</p>
+            <p><a href="{% url 'index'%}">トップ</a></p>
+            <p><a href="{% url 'mypage'%}">{{user.username}}</a></p>
             <p><a href="{% url 'logout'%}">ログアウト</a></p>
             {% else %}
             <p><a href="{% url 'login' %}">ログイン</a></p>
-            <p><a href="{% url 'signup' %}">新規会員登録</a></p>
+            <p><a href="{% url 'signup' %}">新規登録</a></p>
             {% endif %}
         </div>
     </header>
-
     <div id="wrapper">
-      <nav id="nav-left">
-        <div id="nav">
-          <ul id="nav-ul">
-            <li class="nav-li"><a href="{% url 'index' %}" class="nav-li-a"><i class="fa fa-tachometer" style="margin-right:15px"></i>Dashboard</a></li>
-            <li class="nav-li"><a href="#" class="nav-li-a"><i class="fas fa-list" style="margin-right:15px"></i>App1</a></li>
-          </ul>
-        </div>
-      </nav>
       <main id="main">
           {% block content %}
           {% endblock %}

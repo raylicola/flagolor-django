@@ -3,10 +3,15 @@ from django.views.generic import TemplateView # テンプレートタグ
 from .forms import AccountForm, AddAccountForm # ユーザーアカウントフォーム
 from django.contrib.auth import authenticate
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
     return render(request, 'post_outfit/index.html')
+
+@login_required
+def mypage(request):
+    return render(request, 'post_outfit/mypage.html')
 
 class  AccountRegistration(TemplateView):
 
