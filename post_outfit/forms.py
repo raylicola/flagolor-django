@@ -1,4 +1,3 @@
-from attr import fields
 from django import forms
 from django.contrib.auth.models import User
 from .models import Account, Flag, Outfit
