@@ -142,5 +142,9 @@ MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = '/accounts'
 LOGIN_REDIRECT_URL = '/post_outfit'
 LOGOUT_REDIRECT_URL = '/post_outfit'
+
+# Session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
