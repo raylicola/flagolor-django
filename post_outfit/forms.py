@@ -1,18 +1,16 @@
+from attr import fields
 from django import forms
 from django.contrib.auth.models import User
 from .models import Account, Flag, Outfit
 
-# フォームクラス作成
+
 class AccountForm(forms.ModelForm):
     # パスワード入力：非表示対応
     password = forms.CharField(widget=forms.PasswordInput(),label="パスワード")
 
     class Meta():
-        # ユーザー認証
         model = User
-        # フィールド指定
         fields = ('username','email','password')
-        # フィールド名指定
         labels = {
             'username':"ユーザーネーム",
             'email':"メールアドレス"
@@ -21,7 +19,6 @@ class AccountForm(forms.ModelForm):
 
 class AddAccountForm(forms.ModelForm):
     class Meta():
-        # モデルクラスを指定
         model = Account
         fields = (
             'account_icon',
@@ -33,3 +30,22 @@ class AddAccountForm(forms.ModelForm):
             }
 
 
+class FlagForm(forms.ModelForm):
+    class Meta:
+        model = Flag
+        fields = (
+            'flag_name',
+            'flag_image',
+            'flag_start_date',
+            'flag_end_date',
+        )
+
+
+class OutfitForm(forms.ModelForm):
+    class Meta:
+        model = Outfit
+        fields = (
+            'outfit_photo',
+            'outfit_desc',
+            'outfit_good',
+        )
