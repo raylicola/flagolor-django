@@ -9,9 +9,26 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'post_outfit/index.html')
 
+
+@login_required
+def outfit_detail(request, outfit_id, username):
+    return render(request, 'post_outfit/outfit_detail.html', {'username': username, 'outfit_id':outfit_id})
+
+
+@login_required
+def user_detail(request, username):
+    return render(request, 'post_outfit/user_detail.html', {'username':username})
+
+
+@login_required
+def profile_edit(request):
+    return render(request, 'post_outfit/profile_edit.html')
+
+
 @login_required
 def mypage(request):
     return render(request, 'post_outfit/mypage.html')
+
 
 class  AccountRegistration(TemplateView):
 
