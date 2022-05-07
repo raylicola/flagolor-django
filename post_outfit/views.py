@@ -30,6 +30,11 @@ def mypage(request):
     return render(request, 'post_outfit/mypage.html')
 
 
+@login_required
+def admin_setting(request):
+    return render(request, 'post_outfit/admin_setting.html')
+
+
 class  AccountRegistration(TemplateView):
 
     def __init__(self):

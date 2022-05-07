@@ -14,7 +14,10 @@
             <p>Flagolor</p>
         </div>
         <div class="user_state">
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+            <p><a href="{% url 'admin_setting'%}">管理者ページ</a></p>
+            <p><a href="{% url 'logout'%}">ログアウト</a></p>
+            {% elif user.is_authenticated %}
             <p><a href="{% url 'index'%}">トップ</a></p>
             <p><a href="{% url 'mypage'%}">{{user.username}}</a></p>
             <p><a href="{% url 'logout'%}">ログアウト</a></p>
