@@ -20,6 +20,7 @@
         <div class="description">
             <p>{{outfit.outfit_desc}}</p>
         </div>
+        {% if user.is_authenticated %}
         <div class="action">
             <div class="btn-good">
                 <a href="{% url 'update_good' outfit_id=outfit.id username=username %}">
@@ -32,6 +33,7 @@
                 </a>
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
