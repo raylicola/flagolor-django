@@ -21,6 +21,14 @@
 
 <!-- 自分の投稿一覧表示 -->
 <div class="post-items">
-
+    <ul>
+        {% for item in user.related_outfit.all %}
+        <li>
+            <div class="img">
+                <img src="/media/{{ item.outfit_photo }}" alt="">
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

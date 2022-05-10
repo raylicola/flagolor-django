@@ -3,6 +3,11 @@
 }
 
 .profile img {
-    width: 150px;
     height: 150px;
+    width: auto;
+}
+
+.post-items img {
+    height: 300px;
+    width: auto;
 }

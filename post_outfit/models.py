@@ -35,6 +35,9 @@ class Flag(models.Model):
     flag_start_date = models.DateField()
     flag_end_date = models.DateField()
 
+    def __str__(self):
+        return self.flag_name
+
 
 class Outfit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='related_outfit')
