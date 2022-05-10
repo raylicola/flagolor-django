@@ -13,14 +13,21 @@ def index(request):
     return render(request, 'post_outfit/index.html', params)
 
 
-@login_required
 def outfit_detail(request, outfit_id, username):
     return render(request, 'post_outfit/outfit_detail.html', {'username': username, 'outfit_id':outfit_id})
 
 
-@login_required
 def user_detail(request, username):
-    return render(request, 'post_outfit/user_detail.html', {'username':username})
+    if username==request.user.username:
+        return render(request, 'post_outfit/mypage.html')
+    else:
+        account = Account.objects.get(user__username=username)
+        outfits = Outfit.objects.filter(user__username=username)
+        params = {
+            'account': account,
+            'outfits': outfits,
+        }
+        return render(request, 'post_outfit/user_detail.html', params)
 
 
 @login_required
@@ -30,9 +37,7 @@ def profile_edit(request):
 
 @login_required
 def mypage(request):
-    params = {
-    }
-    return render(request, 'post_outfit/mypage.html', params)
+    return render(request, 'post_outfit/mypage.html')
 
 
 class  AccountRegistration(TemplateView):

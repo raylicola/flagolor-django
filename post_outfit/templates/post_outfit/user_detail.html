@@ -1,17 +1,31 @@
-<!--
-    /username
-    ユーザーの詳細
-    マイページみたいな感じにする
--->
 {% extends "post_outfit/base.html" %}
-{% block content %}
 
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'post_outfit/css/mypage.css' %}">
+{% endblock %}
+
+{% block content %}
 <div class="profile">
-    ユーザーのプロフィール
-    {{username}}
+    <div class="img">
+        <img src="/media/{{ account.account_icon }}" alt="">
+    </div>
+    <div class="user_main">
+        <section class="name">{{ account.user.username }}</section>
+        <section class="intro">{{ account.account_intro }}</section>
+    </div>
 </div>
 
-<div class="post-items">
-
+<!-- 投稿一覧表示 -->
+<div class="outfits">
+    <ul>
+        {% for item in outfits %}
+        <li>
+            <div class="img">
+                <img src="/media/{{ item.outfit_photo }}" alt="">
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

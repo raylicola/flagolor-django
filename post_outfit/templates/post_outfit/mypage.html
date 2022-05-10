@@ -17,9 +17,7 @@
 
 <div class="profile">
     <div class="img">
-        {% if user.related_account.account_icon %}
         <img src="/media/{{ user.related_account.account_icon }}" alt="">
-        {% endif %}
     </div>
     <div class="user_main">
         <section class="name">{{ user.username }}</section>
