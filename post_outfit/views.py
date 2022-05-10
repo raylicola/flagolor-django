@@ -14,7 +14,15 @@ def index(request):
 
 
 def outfit_detail(request, outfit_id, username):
-    return render(request, 'post_outfit/outfit_detail.html', {'username': username, 'outfit_id':outfit_id})
+    outfit = Outfit.objects.get(id=outfit_id)
+    account = Account.objects.get(user__username=username)
+    params = {
+        'account': account,
+        'username': username,
+        'outfit': outfit,
+
+    }
+    return render(request, 'post_outfit/outfit_detail.html', params)
 
 
 def user_detail(request, username):

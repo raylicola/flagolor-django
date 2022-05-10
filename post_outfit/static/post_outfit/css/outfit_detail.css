@@ -1,0 +1,17 @@
+.outfit {
+    display: flex;
+}
+
+.outfit .outfit-photo img {
+    height: 800px;
+    width: auto;
+}
+
+.outfit .detail .account{
+    display: flex;
+}
+
+.outfit .detail .account .account-icon img {
+    height: 30px;
+    width: auto;
+}

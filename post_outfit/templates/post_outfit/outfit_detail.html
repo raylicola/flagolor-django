@@ -1,13 +1,25 @@
-<!--
-    /outfit_id
-    投稿の詳細
--->
 {% extends "post_outfit/base.html" %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'post_outfit/css/outfit_detail.css' %}">
+{% endblock %}
+
 {% block content %}
-
-<div class="outfit-detail">
-    投稿物{{outfit_id}}
-    ユーザー{{username}}
+<div class="outfit">
+    <div class="outfit-photo">
+        <img src="/media/{{ outfit.outfit_photo }}" alt="">
+    </div>
+    <div class="detail">
+        <div class="account">
+            <section class="account-icon">
+                <img src="/media/{{ account.account_icon }}" alt="">
+            </section>
+            <section class="name">{{username}}</section>
+        </div>
+        <div class="description">
+            <p>{{outfit.outfit_desc}}</p>
+        </div>
+    </div>
 </div>
-
 {% endblock %}
