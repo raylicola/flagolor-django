@@ -41,10 +41,28 @@ class Flag(models.Model):
 
 
 class Outfit(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='related_outfit')
-    flag = models.ForeignKey(Flag, on_delete=models.CASCADE,
-    related_name='related_outfit')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='related_outfit'
+        )
+    flag = models.ForeignKey(
+        Flag,
+        on_delete=models.CASCADE,
+        related_name='related_outfit'
+        )
     outfit_photo = models.ImageField(upload_to="outfit_photo")
     outfit_desc = models.CharField(max_length=400)
     outfit_good = models.IntegerField(default=0)
+
+
+class Follow(models.Model):
+    follow_to = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name='related_follow_to'
+        )
+    follow_from = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name='related_follow_from'
+        )
 
