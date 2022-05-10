@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView # テンプレートタグ
-from .forms import AccountForm, AddAccountForm # ユーザーアカウントフォーム
-from django.contrib.auth import authenticate
-from django.urls import reverse
+from django.shortcuts import redirect, render
+from django.views.generic import TemplateView
+from post_outfit.models import Outfit
+from post_outfit.forms import OutfitForm, AccountForm, AddAccountForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -28,11 +27,6 @@ def profile_edit(request):
 @login_required
 def mypage(request):
     return render(request, 'post_outfit/mypage.html')
-
-
-@login_required
-def admin_setting(request):
-    return render(request, 'post_outfit/admin_setting.html')
 
 
 class  AccountRegistration(TemplateView):

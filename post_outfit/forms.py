@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Account, Flag, Outfit
+from post_outfit.models import Account, Flag, Outfit
 
 
 class AccountForm(forms.ModelForm):
@@ -27,17 +27,6 @@ class AddAccountForm(forms.ModelForm):
             'account_icon':"プロフィール写真",
             'account_intro':"自己紹介",
             }
-
-
-class FlagForm(forms.ModelForm):
-    class Meta:
-        model = Flag
-        fields = (
-            'flag_name',
-            'flag_image',
-            'flag_start_date',
-            'flag_end_date',
-        )
 
 
 class OutfitForm(forms.ModelForm):
