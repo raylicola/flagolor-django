@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-from post_outfit.models import Outfit
+from post_outfit.models import Account, Outfit
 from post_outfit.forms import OutfitForm, AccountForm, AddAccountForm
 from django.contrib.auth.decorators import login_required
 
@@ -26,7 +26,10 @@ def profile_edit(request):
 
 @login_required
 def mypage(request):
-    return render(request, 'post_outfit/mypage.html')
+    params = {
+        'account': request.user.related_account,
+    }
+    return render(request, 'post_outfit/mypage.html', params)
 
 
 class  AccountRegistration(TemplateView):

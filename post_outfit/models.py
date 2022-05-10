@@ -5,11 +5,15 @@ from django.contrib.auth.models import User
 class Account(models.Model):
 
     # ユーザー認証のインスタンス(1vs1関係)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='related_account'
+        )
 
     # プロフィール写真
     account_icon = models.ImageField(
-        upload_to="account_icon",
+        upload_to="media/account_icon",
         blank=True,
         null=True
         )
@@ -27,7 +31,7 @@ class Account(models.Model):
 
 class Flag(models.Model):
     flag_name = models.CharField(max_length=30)
-    flag_image =  models.ImageField(upload_to="flag_image")
+    flag_image =  models.ImageField(upload_to="media/flag_image")
     flag_start_date = models.DateField()
     flag_end_date = models.DateField()
 
@@ -35,6 +39,6 @@ class Flag(models.Model):
 class Outfit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     flag = models.ForeignKey(Flag, on_delete=models.CASCADE)
-    outfit_photo = models.ImageField(upload_to="outfit_photo")
+    outfit_photo = models.ImageField(upload_to="media/outfit_photo")
     outfit_desc = models.CharField(max_length=400)
     outfit_good = models.IntegerField(default=0)
