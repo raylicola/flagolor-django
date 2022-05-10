@@ -22,10 +22,14 @@
         </div>
         <div class="action">
             <div class="btn-good">
-                <a href=""></a>
+                <a href="{% url 'update_good' outfit_id=outfit.id username=username %}">
+                    <img src="/media/common/btn_good.jpg" alt="">
+                </a>
             </div>
             <div class="btn-save">
-
+                <a href="{% url 'update_save' outfit_id=outfit.id username=username %}">
+                    <img src="/media/common/btn_save.jpg" alt="">
+                </a>
             </div>
         </div>
     </div>

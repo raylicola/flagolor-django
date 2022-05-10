@@ -15,3 +15,7 @@
     height: 30px;
     width: auto;
 }
+
+.outfit .detail .action {
+    display: flex;
+}

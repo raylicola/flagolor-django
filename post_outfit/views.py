@@ -55,6 +55,34 @@ def mypage(request):
     return render(request, 'post_outfit/mypage.html')
 
 
+@login_required
+def update_save(request, username, outfit_id):
+    outfit = Outfit.objects.get(id=outfit_id)
+    account = Account.objects.get(user__username=username)
+    params = {
+        'account': account,
+        'username': username,
+        'outfit': outfit,
+
+    }
+    return render(request, 'post_outfit/outfit_detail.html', params)
+
+@login_required
+def update_good(request, username, outfit_id):
+    outfit = Outfit.objects.get(id=outfit_id)
+    outfit.outfit_good += 1
+    outfit.save()
+    print(outfit.outfit_good)
+    account = Account.objects.get(user__username=username)
+    params = {
+        'account': account,
+        'username': username,
+        'outfit': outfit,
+
+    }
+    return render(request, 'post_outfit/outfit_detail.html', params)
+
+
 class  AccountRegistration(TemplateView):
 
     def __init__(self):
