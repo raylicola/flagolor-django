@@ -40,7 +40,15 @@ def user_detail(request, username):
 
 @login_required
 def profile_edit(request):
-    return render(request, 'post_outfit/profile_edit.html')
+    add_account_obj = Account.objects.get(user__username=request.user.username)
+    if (request.method=='POST'):
+        add_account = AddAccountForm(request.POST, instance=add_account_obj)
+        add_account.save()
+        return redirect(to='/post_outfit/profile_edit')
+    params = {
+        'add_account_form': AddAccountForm(instance=add_account_obj)
+    }
+    return render(request, 'post_outfit/profile_edit.html', params)
 
 
 @login_required
