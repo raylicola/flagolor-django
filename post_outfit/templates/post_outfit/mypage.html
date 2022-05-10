@@ -9,13 +9,13 @@
 <p><a href="{% url 'password_change_form'%}">Change Password</a></p>
 <div class="profile">
     <div class="img">
-        {% if account.account_icon %}
-        <img src="/{{ account.account_icon }}" alt="">
+        {% if user.related_account.account_icon %}
+        <img src="/media/{{ user.related_account.account_icon }}" alt="">
         {% endif %}
     </div>
     <div class="user_main">
         <section class="name">{{ user.username }}</section>
-        <section class="intro">{{ account.account_intro }}</section>
+        <section class="intro">{{ user.related_account.account_intro }}</section>
     </div>
 </div>
 

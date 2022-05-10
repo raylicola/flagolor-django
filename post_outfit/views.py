@@ -27,7 +27,6 @@ def profile_edit(request):
 @login_required
 def mypage(request):
     params = {
-        'account': request.user.related_account,
     }
     return render(request, 'post_outfit/mypage.html', params)
 
