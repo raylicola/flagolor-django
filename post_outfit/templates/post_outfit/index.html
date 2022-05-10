@@ -1,4 +1,10 @@
 {% extends "post_outfit/base.html" %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'post_outfit/css/index.css' %}">
+{% endblock %}
+
 {% block content %}
 <!--
     検索欄
@@ -9,8 +15,28 @@
 </div>
 
 <!-- 投稿一覧表示 -->
-<div class="post-items">
-
+<div class="outfits">
+    <ul>
+        {% for item in outfits %}
+        <li>
+            <div class="outfit-photo">
+                <a href="{% url 'outfit_detail' username=item.user.username outfit_id=item.id %}">
+                    <img src="/media/{{ item.outfit_photo }}" alt="">
+                </a>
+            </div>
+            <div class="profile">
+                <div class="profile-account-icon">
+                    <a href="{% url 'user_detail' username=item.user.username %}">
+                        <img src="/media/{{ item.user.related_account.account_icon }}" alt="">
+                    </a>
+                </div>
+                <div class="profile-username">
+                </div>
+                    {{item.user.username}}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 
 <!-- ページ切り替えボタン -->

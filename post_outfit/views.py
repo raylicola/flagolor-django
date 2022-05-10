@@ -6,7 +6,11 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    return render(request, 'post_outfit/index.html')
+    outfits = Outfit.objects.all()
+    params = {
+        'outfits': outfits,
+    }
+    return render(request, 'post_outfit/index.html', params)
 
 
 @login_required

@@ -1,5 +1,10 @@
 {% extends "post_outfit/base.html" %}
 
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'post_outfit/css/mypage.css' %}">
+{% endblock %}
+
 {% block content %}
 <!--
     プロフィール表示
@@ -23,7 +28,7 @@
 </div>
 
 <!-- 自分の投稿一覧表示 -->
-<div class="post-items">
+<div class="outfits">
     <ul>
         {% for item in user.related_outfit.all %}
         <li>

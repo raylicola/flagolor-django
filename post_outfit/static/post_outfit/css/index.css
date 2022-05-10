@@ -1,0 +1,26 @@
+.outfits {
+    margin: 30px auto 0 auto;
+}
+
+.outfits ul {
+    display: flex;
+}
+
+.outfits ul li {
+    list-style-type: none;
+    margin: 20px;
+}
+
+.outfits ul li .profile {
+    display: flex;
+}
+
+.outfits ul li .profile .profile-account-icon a img{
+    height: 30px;
+    width: auto;
+}
+
+.outfits ul li .outfit-photo a img{
+    height: 300px;
+    width: auto;
+}
