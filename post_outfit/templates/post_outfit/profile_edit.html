@@ -9,7 +9,7 @@
     プロフィール情報の変更
 <div class="edit-profile">
     <table class="reg_form">
-        <form enctype="multipart/form-data" method="post">
+        <form enctype="multipart/form-data" method="post" action="{% url 'profile_edit' %}">
         {% csrf_token %}
         {{ account_form.as_table }}
         {{ add_account_form.as_table }}

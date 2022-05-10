@@ -44,7 +44,6 @@ def profile_edit(request):
     if (request.method=='POST'):
         add_account = AddAccountForm(request.POST, instance=add_account_obj)
         add_account.save()
-        return redirect(to='/post_outfit/profile_edit')
     params = {
         'add_account_form': AddAccountForm(instance=add_account_obj)
     }
