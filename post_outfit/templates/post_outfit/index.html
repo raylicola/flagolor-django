@@ -31,8 +31,13 @@
                     </a>
                 </div>
                 <div class="profile-username">
-                </div>
                     {{item.user.username}}
+                </div>
+                <div class="btn-follow">
+                    <a href="{% url 'follow' username=item.user.username %}">
+                        <p>フォロー</p>
+                    </a>
+                </div>
             </div>
         </li>
         {% endfor %}

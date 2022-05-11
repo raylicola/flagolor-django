@@ -31,9 +31,10 @@
     <ul>
         {% for item in user.related_outfit.all %}
         <li>
-            <div class="img">
-                <img src="/media/{{ item.outfit_photo }}" alt="">
-            </div>
+            <div class="outfit-photo">
+                <a href="{% url 'outfit_detail' username=item.user.username outfit_id=item.id %}">
+                    <img src="/media/{{ item.outfit_photo }}" alt="">
+                </a>
         </li>
         {% endfor %}
     </ul>

@@ -7,6 +7,7 @@ urlpatterns = [
     path('mypage/', views.mypage, name='mypage'),
     path('update_good/<int:outfit_id>/', views.update_good, name='update_good'),
     path('update_save/<int:outfit_id>/', views.update_save, name='update_save'),
+    path('follow/<str:username>/', views.follow, name='follow'),
     path('save/', views.save, name='save'),
     path('profile_edit/', views.profile_edit, name='profile_edit'),
     path('<str:username>/', views.user_detail, name='user_detail'),

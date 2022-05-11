@@ -1,12 +1,13 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-from post_outfit.models import Account, Outfit, Save
+from post_outfit.models import Account, Follow, Outfit, Save
 from post_outfit.forms import OutfitForm, AccountForm, AddAccountForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
-    outfits = Outfit.objects.all()
+    outfits = Outfit.objects.exclude(user=request.user)
     params = {
         'outfits': outfits,
     }
@@ -62,6 +63,16 @@ def save(request):
 @login_required
 def mypage(request):
     return render(request, 'post_outfit/mypage.html')
+
+
+@login_required
+def follow(request, username):
+    follow_to = User.objects.get(username=username)
+    follow_from = request.user
+    if (len(Follow.objects.filter(follow_to=follow_to, follow_from=follow_from)) == 0):
+        follow = Follow(follow_to=follow_to, follow_from=follow_from)
+        follow.save()
+    return redirect(request.META['HTTP_REFERER'])
 
 
 @login_required
