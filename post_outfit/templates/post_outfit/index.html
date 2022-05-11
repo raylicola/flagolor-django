@@ -6,10 +6,13 @@
 {% endblock %}
 
 {% block content %}
-<!--
-    検索欄
-    国で絞る,並び変え{いいね or 新着順}
--->
+<div class="flag">
+    <div class="flag-name">今週の国旗：{{flag_today.flag_name}}</div>
+    <div class="flag-img">
+        <img src="/media/{{ flag_today.flag_image }}" alt="">
+    </div>
+</div>
+
 <div class="search">
     <form method="post" action="{% url 'index' %}">
         {% csrf_token %}
@@ -45,6 +48,9 @@
                 </div>
                 <div class="profile-username">
                     {{item.user.username}}
+                </div>
+                <div class="flag-img">
+                    <img src="/media/{{ item.flag.flag_image }}" alt="">
                 </div>
                 {% if user.is_authenticated %}
                 <div class="btn-follow">

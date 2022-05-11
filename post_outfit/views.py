@@ -10,6 +10,10 @@ from django.utils import timezone
 # Create your views here.
 def index(request):
     flags = Flag.objects.all()
+    flag_today = Flag.objects.filter(
+            flag_start_date__lte=datetime.datetime.now(),
+            flag_end_date__gte=datetime.datetime.now(),
+            ).first()
     # ログインの有無
     if request.user.is_authenticated:
         outfits = Outfit.objects.exclude(user=request.user)
@@ -28,7 +32,8 @@ def index(request):
             outfits = outfits.order_by('outfit_good').reverse()
     params = {
         'outfits': outfits,
-        'flags': flags
+        'flags': flags,
+        'flag_today': flag_today,
     }
     return render(request, 'post_outfit/index.html', params)
 
