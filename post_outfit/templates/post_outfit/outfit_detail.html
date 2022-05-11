@@ -12,25 +12,34 @@
     </div>
     <div class="detail">
         <div class="account">
-            <section class="account-icon">
-                <img src="/media/{{ account.account_icon }}" alt="">
-            </section>
-            <section class="name">{{username}}</section>
-        </div>
+            <div class="account-icon">
+                <a href="{% url 'user_detail' username %}">
+                    <img src="/media/{{ account.account_icon }}" alt="">
+                </a>
+            </div>
+            <div class="name">{{username}}</div>
+                {% if user.is_authenticated %}
+                <div class="btn-follow">
+                    <form action="{% url 'follow' username=username %}">
+                        <input type="submit" value="フォロー">
+                    </form>
+                </div>
+                {% endif %}
+            </div>
         <div class="description">
             <p>{{outfit.outfit_desc}}</p>
         </div>
         {% if user.is_authenticated %}
         <div class="action">
             <div class="btn-good">
-                <a href="{% url 'update_good' outfit_id=outfit.id%}">
-                    <img src="/media/common/btn_good.jpg" alt="">
-                </a>
+                <form action="{% url 'update_good' outfit_id=outfit.id %}">
+                    <input type="image" src="/media/common/btn_good.jpg" alt="いいね">
+                </form>
             </div>
             <div class="btn-save">
-                <a href="{% url 'update_save' outfit_id=outfit.id%}">
-                    <img src="/media/common/btn_save.jpg" alt="">
-                </a>
+                <form action="{% url 'update_save' outfit_id=outfit.id %}">
+                    <input type="image" src="/media/common/btn_save.jpg" alt="保存">
+                </form>
             </div>
         </div>
         {% endif %}

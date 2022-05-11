@@ -11,3 +11,18 @@
     height: 300px;
     width: auto;
 }
+
+.outfits .outfit-container .detail {
+    display: flex;
+    margin: 5px;
+}
+
+.outfits .outfit-container .detail .good{
+    display: flex;
+    margin-right: 10px;
+}
+
+.outfits .outfit-container .detail .good .good-img img {
+    height: 30px;
+    width: auto;
+}

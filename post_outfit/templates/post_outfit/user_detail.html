@@ -12,6 +12,13 @@
     </div>
     <div class="user_main">
         <section class="name">{{ account.user.username }}</section>
+        {% if user.is_authenticated %}
+        <div class="btn-follow">
+            <form action="{% url 'follow' username=account.user.username %}">
+                <input type="submit" value="フォロー">
+            </form>
+        </div>
+        {% endif %}
         <section class="intro">{{ account.account_intro }}</section>
     </div>
 </div>

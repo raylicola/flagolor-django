@@ -33,11 +33,13 @@
                 <div class="profile-username">
                     {{item.user.username}}
                 </div>
+                {% if user.is_authenticated %}
                 <div class="btn-follow">
-                    <a href="{% url 'follow' username=item.user.username %}">
-                        <p>フォロー</p>
-                    </a>
+                    <form action="{% url 'follow' username=item.user.username %}">
+                        <input type="submit" value="フォロー">
+                    </form>
                 </div>
+                {% endif %}
             </div>
         </li>
         {% endfor %}

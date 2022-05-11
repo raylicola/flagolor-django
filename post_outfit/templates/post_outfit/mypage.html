@@ -31,10 +31,29 @@
     <ul>
         {% for item in user.related_outfit.all %}
         <li>
-            <div class="outfit-photo">
-                <a href="{% url 'outfit_detail' username=item.user.username outfit_id=item.id %}">
-                    <img src="/media/{{ item.outfit_photo }}" alt="">
-                </a>
+            <div class="outfit-container">
+                <div class="outfit-photo">
+                    <a href="{% url 'outfit_detail' username=item.user.username outfit_id=item.id %}">
+                        <img src="/media/{{ item.outfit_photo }}" alt="">
+                    </a>
+                </div>
+                <div class="detail">
+                    <div class="good">
+                        <div class="good-img">
+                            <img src="/media/common/btn_good.jpg" alt="">
+                        </div>
+                        <div class="good-num">
+                            {{item.outfit_good}}
+                        </div>
+                    </div>
+                    <div class="delete">
+                        <form action="{% url 'delete' item.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="削除">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </li>
         {% endfor %}
     </ul>

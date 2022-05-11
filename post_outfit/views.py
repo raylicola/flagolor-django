@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
-    outfits = Outfit.objects.exclude(user=request.user)
+    if request.user.is_authenticated:
+        outfits = Outfit.objects.exclude(user=request.user)
+    else:
+        outfits = Outfit.objects.all()
     params = {
         'outfits': outfits,
     }
@@ -40,6 +43,14 @@ def user_detail(request, username):
 
 
 @login_required
+def delete(request, outfit_id):
+    if(request.method=='POST'):
+        outfit = Outfit.objects.get(id=outfit_id)
+        outfit.delete()
+    return redirect(to='/post_outfit/mypage')
+
+
+@login_required
 def profile_edit(request):
     add_account_obj = Account.objects.get(user__username=request.user.username)
     if (request.method=='POST'):
@@ -67,30 +78,32 @@ def mypage(request):
 
 @login_required
 def follow(request, username):
-    follow_to = User.objects.get(username=username)
-    follow_from = request.user
-    if (len(Follow.objects.filter(follow_to=follow_to, follow_from=follow_from)) == 0):
-        follow = Follow(follow_to=follow_to, follow_from=follow_from)
-        follow.save()
+    if(request.method=='POST'):
+        follow_to = User.objects.get(username=username)
+        follow_from = request.user
+        if (len(Follow.objects.filter(follow_to=follow_to, follow_from=follow_from)) == 0):
+            follow = Follow(follow_to=follow_to, follow_from=follow_from)
+            follow.save()
     return redirect(request.META['HTTP_REFERER'])
 
 
 @login_required
 def update_save(request, outfit_id):
-    outfit = Outfit.objects.get(id=outfit_id)
-    user = request.user
-    if (len(Save.objects.filter(user=user, outfit=outfit)) == 0):
-        save = Save(user=user, outfit=outfit)
-        save.save()
+    if(request.method=='POST'):
+        outfit = Outfit.objects.get(id=outfit_id)
+        user = request.user
+        if (len(Save.objects.filter(user=user, outfit=outfit)) == 0):
+            save = Save(user=user, outfit=outfit)
+            save.save()
     return redirect(request.META['HTTP_REFERER'])
 
 
 @login_required
 def update_good(request, outfit_id):
-    outfit = Outfit.objects.get(id=outfit_id)
-    outfit.outfit_good += 1
-    outfit.save()
-    print(outfit.outfit_good)
+    if(request.method=='POST'):
+        outfit = Outfit.objects.get(id=outfit_id)
+        outfit.outfit_good += 1
+        outfit.save()
     return redirect(request.META['HTTP_REFERER'])
 
 
