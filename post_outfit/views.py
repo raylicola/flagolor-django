@@ -56,31 +56,17 @@ def mypage(request):
 
 
 @login_required
-def update_save(request, username, outfit_id):
+def update_save(request, outfit_id):
     outfit = Outfit.objects.get(id=outfit_id)
-    account = Account.objects.get(user__username=username)
-    params = {
-        'account': account,
-        'username': username,
-        'outfit': outfit,
 
-    }
-    return render(request, 'post_outfit/outfit_detail.html', params)
 
 @login_required
-def update_good(request, username, outfit_id):
+def update_good(request, outfit_id):
     outfit = Outfit.objects.get(id=outfit_id)
     outfit.outfit_good += 1
     outfit.save()
     print(outfit.outfit_good)
-    account = Account.objects.get(user__username=username)
-    params = {
-        'account': account,
-        'username': username,
-        'outfit': outfit,
-
-    }
-    return render(request, 'post_outfit/outfit_detail.html', params)
+    return redirect(request.META['HTTP_REFERER'])
 
 
 class  AccountRegistration(TemplateView):

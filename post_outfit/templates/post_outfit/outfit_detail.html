@@ -23,12 +23,12 @@
         {% if user.is_authenticated %}
         <div class="action">
             <div class="btn-good">
-                <a href="{% url 'update_good' outfit_id=outfit.id username=username %}">
+                <a href="{% url 'update_good' outfit_id=outfit.id%}">
                     <img src="/media/common/btn_good.jpg" alt="">
                 </a>
             </div>
             <div class="btn-save">
-                <a href="{% url 'update_save' outfit_id=outfit.id username=username %}">
+                <a href="{% url 'update_save' outfit_id=outfit.id%}">
                     <img src="/media/common/btn_save.jpg" alt="">
                 </a>
             </div>
