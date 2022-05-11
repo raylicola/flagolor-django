@@ -21,7 +21,7 @@
     <div class="img">
         <img src="/media/{{ user.related_account.account_icon }}" alt="">
     </div>
-    <div class="user_main">
+    <div class="user-main">
         <section class="name">{{ user.username }}</section>
         <section class="intro">{{ user.related_account.account_intro }}</section>
     </div>
@@ -46,6 +46,9 @@
                         <div class="good-num">
                             {{item.outfit_good}}
                         </div>
+                    </div>
+                    <div class="flag-img">
+                        <img src="/media/{{ item.flag.flag_image }}" alt="">
                     </div>
                     <div class="delete">
                         <form action="{% url 'delete' item.id %}" method="post">

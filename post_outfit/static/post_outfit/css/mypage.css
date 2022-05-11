@@ -1,10 +1,35 @@
 .profile {
+    margin: 30px;
     display: flex;
+}
+
+.profile .img {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .profile img {
     height: 150px;
     width: auto;
+    border: solid 1px gray;
+}
+
+.profile .user-main {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.profile .user-main .username{
+    display: flex;
+}
+
+.profile .user-main .username .name{
+    padding-right: 20px;
+}
+
+.profile .user-main .intro{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .outfits img {
@@ -17,6 +42,13 @@
     margin: 5px;
 }
 
+.outfits .outfit-container .detail .flag-img img {
+    width: 40px;
+    height: auto;
+    border: solid 1px gray;
+    vertical-align: middle;
+}
+
 .outfits .outfit-container .detail .good{
     display: flex;
     margin-right: 10px;
@@ -25,4 +57,16 @@
 .outfits .outfit-container .detail .good .good-img img {
     height: 30px;
     width: auto;
+}
+
+.outfits .outfit-container .detail .delete {
+    margin-left: auto;
+}
+
+.outfits ul {
+    display: flex;
+}
+
+.outfits ul li {
+    margin: 15px;
 }
