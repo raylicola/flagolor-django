@@ -66,3 +66,13 @@ class Follow(models.Model):
         related_name='related_follow_from'
         )
 
+
+class Save(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        )
+    outfit = models.ForeignKey(
+        Outfit,
+        on_delete=models.CASCADE,
+        )
