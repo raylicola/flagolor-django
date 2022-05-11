@@ -20,7 +20,8 @@
             <div class="name">{{username}}</div>
                 {% if user.is_authenticated %}
                 <div class="btn-follow">
-                    <form action="{% url 'follow' username=username %}">
+                    <form action="{% url 'follow' username=username %}" method="post">
+                        {% csrf_token %}
                         <input type="submit" value="フォロー">
                     </form>
                 </div>
@@ -32,12 +33,14 @@
         {% if user.is_authenticated %}
         <div class="action">
             <div class="btn-good">
-                <form action="{% url 'update_good' outfit_id=outfit.id %}">
+                <form action="{% url 'update_good' outfit_id=outfit.id %}" method="post">
+                    {% csrf_token %}
                     <input type="image" src="/media/common/btn_good.jpg" alt="いいね">
                 </form>
             </div>
             <div class="btn-save">
-                <form action="{% url 'update_save' outfit_id=outfit.id %}">
+                <form action="{% url 'update_save' outfit_id=outfit.id %}" method="post">
+                    {% csrf_token %}
                     <input type="image" src="/media/common/btn_save.jpg" alt="保存">
                 </form>
             </div>

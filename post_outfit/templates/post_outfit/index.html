@@ -48,7 +48,8 @@
                 </div>
                 {% if user.is_authenticated %}
                 <div class="btn-follow">
-                    <form action="{% url 'follow' username=item.user.username %}">
+                    <form action="{% url 'follow' username=item.user.username %}" method="post">
+                        {% csrf_token %}
                         <input type="submit" value="フォロー">
                     </form>
                 </div>

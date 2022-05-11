@@ -14,7 +14,8 @@
         <section class="name">{{ account.user.username }}</section>
         {% if user.is_authenticated %}
         <div class="btn-follow">
-            <form action="{% url 'follow' username=account.user.username %}">
+            <form action="{% url 'follow' username=account.user.username %}" method="post">
+                {% csrf_token %}
                 <input type="submit" value="フォロー">
             </form>
         </div>
