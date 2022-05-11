@@ -1,18 +1,32 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-from post_outfit.models import Account, Follow, Outfit, Save
+from post_outfit.models import Account, Follow, Outfit, Save, Flag
 from post_outfit.forms import OutfitForm, AccountForm, AddAccountForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
+    flags = Flag.objects.all()
+    # ログインの有無
     if request.user.is_authenticated:
         outfits = Outfit.objects.exclude(user=request.user)
     else:
         outfits = Outfit.objects.all()
+    # 検索
+    if (request.method=='POST'):
+        filter = request.POST['filter']
+        sort = request.POST['sort']
+        if(filter!='all'):
+            tmp_outfits = Outfit.objects.filter(flag__flag_name=filter)
+            outfits = outfits.intersection(tmp_outfits)
+        if(sort=='new'):
+            outfits = outfits.order_by('outfit_date').reverse()
+        elif(sort=='good'):
+            outfits = outfits.order_by('outfit_good').reverse()
     params = {
         'outfits': outfits,
+        'flags': flags
     }
     return render(request, 'post_outfit/index.html', params)
 

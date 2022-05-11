@@ -11,7 +11,20 @@
     国で絞る,並び変え{いいね or 新着順}
 -->
 <div class="search">
-
+    <form method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+        <select name="sort">
+            <option value="good">いいねが多い順</option>
+            <option value="new" selected>投稿が新しい順</option>
+        </select>
+        <select name="filter">
+            <option value="all" selected>全ての国</option>
+            {% for item in flags %}
+            <option value="{{ item.flag_name }}">{{ item.flag_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="変更">
+    </form>
 </div>
 
 <!-- 投稿一覧表示 -->
