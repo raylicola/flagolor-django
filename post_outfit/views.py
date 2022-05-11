@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-from post_outfit.models import Account, Outfit
+from post_outfit.models import Account, Outfit, Save
 from post_outfit.forms import OutfitForm, AccountForm, AddAccountForm
 from django.contrib.auth.decorators import login_required
 
@@ -58,6 +58,11 @@ def mypage(request):
 @login_required
 def update_save(request, outfit_id):
     outfit = Outfit.objects.get(id=outfit_id)
+    user = request.user
+    if (len(Save.objects.filter(user=user, outfit=outfit)) == 0):
+        save = Save(user=user, outfit=outfit)
+        save.save()
+    return redirect(request.META['HTTP_REFERER'])
 
 
 @login_required
