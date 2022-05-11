@@ -1,3 +1,9 @@
+.title {
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: medium;
+}
+
 .outfits {
     margin: 30px auto 0 auto;
 }
@@ -8,7 +14,7 @@
 
 .outfits ul li {
     list-style-type: none;
-    margin: 20px;
+    margin: 15px;
 }
 
 .outfits ul li .profile {
