@@ -51,6 +51,15 @@ def profile_edit(request):
 
 
 @login_required
+def save(request):
+    saves = Save.objects.filter(user=request.user)
+    params = {
+        'saves': saves,
+    }
+    return render(request, 'post_outfit/save.html', params)
+
+
+@login_required
 def mypage(request):
     return render(request, 'post_outfit/mypage.html')
 
