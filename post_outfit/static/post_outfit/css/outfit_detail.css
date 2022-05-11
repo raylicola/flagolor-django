@@ -1,5 +1,12 @@
 .outfit {
     display: flex;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+.outfit .outfit-photo {
+    margin-right: 30px;
 }
 
 .outfit .outfit-photo img {
@@ -9,6 +16,34 @@
 
 .outfit .detail .account{
     display: flex;
+}
+
+.outfit .detail .account{
+    display: flex;
+}
+
+.outfit .detail .account .account-icon {
+    margin: 10px;
+}
+
+.outfit .detail .account .username {
+    margin: 5px;
+}
+
+.outfit .detail .account .flag-img {
+    margin: 5px;
+    margin-left: auto;
+}
+
+.outfit .detail .account .flag-img img {
+    height: 30px;
+    width: auto;
+    border: solid 1px gray;
+}
+
+.outfit .detail .account .btn-follow {
+    margin: 5px;
+    margin-left: auto;
 }
 
 .outfit .detail .account .account-icon img {

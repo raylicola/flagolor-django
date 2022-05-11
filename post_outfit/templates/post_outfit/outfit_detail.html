@@ -17,15 +17,20 @@
                     <img src="/media/{{ account.account_icon }}" alt="">
                 </a>
             </div>
-            <div class="name">{{username}}</div>
-                {% if user.is_authenticated %}
-                <div class="btn-follow">
-                    <form action="{% url 'follow' username=username %}" method="post">
-                        {% csrf_token %}
-                        <input type="submit" value="フォロー">
-                    </form>
-                </div>
-                {% endif %}
+            <div class="username">
+                {{username}}
+            </div>
+            <div class="flag-img">
+                <img src="/media/{{ outfit.flag.flag_image }}" alt="">
+            </div>
+            {% if user.is_authenticated %}
+            <div class="btn-follow">
+                <form action="{% url 'follow' username=username %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="フォロー">
+                </form>
+            </div>
+            {% endif %}
             </div>
         <div class="description">
             <p>{{outfit.outfit_desc}}</p>
