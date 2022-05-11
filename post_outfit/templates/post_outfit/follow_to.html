@@ -1,0 +1,20 @@
+{% extends "post_outfit/base.html" %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'post_outfit/css/follow.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="follows">
+    <ul>
+        {% for item in follows %}
+        <li>
+            <div class="user">
+                <a href="{% url 'user_detail' item.follow_from.username %}">{{item.follow_from.username}}</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

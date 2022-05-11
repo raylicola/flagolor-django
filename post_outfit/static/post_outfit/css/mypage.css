@@ -19,6 +19,10 @@
     padding-right: 30px;
 }
 
+.profile .user-main .follow {
+    display: flex;
+}
+
 .profile .user-main .username{
     display: flex;
 }

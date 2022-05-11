@@ -18,6 +18,20 @@
     </div>
     <div class="user-main">
         <section class="name">{{ user.username }}</section>
+        <section class="follow">
+            <div class="from">
+                <form action="{% url 'follow_from' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="フォロー">
+                </form>
+            </div>
+            <div class="to">
+                <form action="{% url 'follow_to' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="フォロワー">
+                </form>
+            </div>
+        </section>
         <section class="intro">{{ user.related_account.account_intro }}</section>
     </div>
 </div>

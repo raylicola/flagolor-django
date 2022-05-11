@@ -64,6 +64,26 @@ def user_detail(request, username):
 
 
 @login_required
+def follow_from(request):
+    if request.method=='POST':
+        follows = Follow.objects.filter(follow_from=request.user)
+        params = {
+            'follows': follows,
+        }
+        return render(request, 'post_outfit/follow_from.html', params)
+
+
+@login_required
+def follow_to(request):
+    if request.method=='POST':
+        follows = Follow.objects.filter(follow_to=request.user)
+        params = {
+            'follows': follows,
+        }
+        return render(request, 'post_outfit/follow_to.html', params)
+
+
+@login_required
 def post(request):
     if(request.method=='POST'):
         flag = Flag.objects.filter(
