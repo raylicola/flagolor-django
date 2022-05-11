@@ -29,11 +29,6 @@ class AddAccountForm(forms.ModelForm):
             }
 
 
-class OutfitForm(forms.ModelForm):
-    class Meta:
-        model = Outfit
-        fields = (
-            'outfit_photo',
-            'outfit_desc',
-            'outfit_good',
-        )
+class OutfitForm(forms.Form):
+    outfit_photo = forms.ImageField(label='コーデ画像')
+    outfit_desc = forms.CharField(label='コメント')

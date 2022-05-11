@@ -55,7 +55,7 @@ class Outfit(models.Model):
     outfit_photo = models.ImageField(upload_to="outfit_photo")
     outfit_desc = models.CharField(max_length=400)
     outfit_good = models.IntegerField(default=0)
-    outfit_date = models.DateTimeField()
+    outfit_date = models.DateTimeField(default=timezone.now)
 
 
 class Follow(models.Model):

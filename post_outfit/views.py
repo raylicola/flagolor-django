@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 from post_outfit.models import Account, Follow, Outfit, Save, Flag
-from post_outfit.forms import OutfitForm, AccountForm, AddAccountForm
+from post_outfit.forms import  AccountForm, AddAccountForm, OutfitForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import datetime
+from django.utils import timezone
 
 # Create your views here.
 def index(request):
@@ -57,6 +59,34 @@ def user_detail(request, username):
 
 
 @login_required
+def post(request):
+    if(request.method=='POST'):
+        flag = Flag.objects.filter(
+            flag_start_date__lte=datetime.datetime.now(),
+            flag_end_date__gte=datetime.datetime.now(),
+            ).first()
+
+        user = request.user
+        outfit_photo = request.FILES['outfit_photo']
+        outfit_desc = request.POST['outfit_desc']
+        outfit_date = timezone.now()
+        outfit = Outfit(
+            user=user,
+            flag=flag,
+            outfit_photo=outfit_photo,
+            outfit_desc=outfit_desc,
+            outfit_date=outfit_date
+        )
+        outfit.save()
+
+        return redirect(to='/post_outfit/mypage')
+    params = {
+        'form': OutfitForm(),
+    }
+    return render(request, 'post_outfit/post.html', params)
+
+
+@login_required
 def delete(request, outfit_id):
     if(request.method=='POST'):
         outfit = Outfit.objects.get(id=outfit_id)
@@ -96,7 +126,10 @@ def follow(request, username):
         follow_to = User.objects.get(username=username)
         follow_from = request.user
         if (len(Follow.objects.filter(follow_to=follow_to, follow_from=follow_from)) == 0):
-            follow = Follow(follow_to=follow_to, follow_from=follow_from)
+            follow = Follow(
+                follow_to=follow_to,
+                follow_from=follow_from
+                )
             follow.save()
     return redirect(request.META['HTTP_REFERER'])
 

@@ -1,0 +1,16 @@
+{% extends "post_outfit/base.html" %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'post_outfit/css/post.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="post">
+    <form method="post" action="{% url 'post' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">投稿</button>
+    </form>
+</div>
+{% endblock %}
