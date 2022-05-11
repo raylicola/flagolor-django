@@ -17,16 +17,12 @@
     margin: 15px;
 }
 
-.outfits ul li .profile {
-    display: flex;
-}
-
-.outfits ul li .profile .profile-account-icon a img{
-    height: 30px;
-    width: auto;
-}
-
 .outfits ul li .outfit-photo a img{
     height: 300px;
     width: auto;
+}
+
+.outfits ul li .delete {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

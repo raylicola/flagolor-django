@@ -119,6 +119,13 @@ def save(request):
     }
     return render(request, 'post_outfit/save.html', params)
 
+@login_required
+def delete_save(request, save_id):
+    if (request.method=='POST'):
+        save = Save.objects.get(id=save_id)
+        save.delete()
+    return redirect(to='/post_outfit/save')
+
 
 @login_required
 def mypage(request):

@@ -16,6 +16,13 @@
             <div class="outfit-photo">
                 <a href="{% url 'outfit_detail' username=item.user.username outfit_id=item.outfit.id %}">
                     <img src="/media/{{ item.outfit.outfit_photo }}" alt="">
+                </a>
+            </div>
+            <div class="delete">
+                <form action="{% url 'delete_save' item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="削除">
+                </form>
             </div>
         </li>
         {% endfor %}
