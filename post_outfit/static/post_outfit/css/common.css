@@ -8,13 +8,7 @@ html *{
     font-size: 17px;
     line-height: 1em;
 }
-p{
-    letter-spacing: 0.05em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    font-size: 1em;
-    line-height: 1.5em;
-}
+
 header{
     display:flex;
     justify-content: space-between;
@@ -34,20 +28,11 @@ header a{
     color: white;
 }
 
-#wrapper{
-    position:relative;
-    height:100vh;
-    padding-bottom:0px;
-    display:flex;
-}
 .user_state p{
     font-size: 15px;
     display: inline-block;
 }
+
 #main{
     padding-left: 10px;
-}
-h1{
-    margin:30px 20px;
-    font-size: 30px;
 }
