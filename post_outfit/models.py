@@ -1,6 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+import uuid
+
+def account_icon_directory_path(instance, filename):
+    return 'account_icon/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
+def flag_image_directory_path(instance, filename):
+    return 'flag_image/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
+def outfit_photo_directory_path(instance, filename):
+    return 'outfit_photo/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 # Create your models here.
 class Account(models.Model):
@@ -14,8 +24,8 @@ class Account(models.Model):
 
     # プロフィール写真
     account_icon = models.ImageField(
-        upload_to="account_icon",
-        default='account_icon/default.jpg',
+        upload_to=account_icon_directory_path,
+        default='common/default.jpg',
         blank=True,
         null=True
         )
@@ -33,7 +43,7 @@ class Account(models.Model):
 
 class Flag(models.Model):
     flag_name = models.CharField(max_length=30)
-    flag_image =  models.ImageField(upload_to="flag_image")
+    flag_image =  models.ImageField(upload_to=flag_image_directory_path)
     flag_start_date = models.DateField()
     flag_end_date = models.DateField()
 
@@ -52,7 +62,7 @@ class Outfit(models.Model):
         on_delete=models.CASCADE,
         related_name='related_outfit'
         )
-    outfit_photo = models.ImageField(upload_to="outfit_photo")
+    outfit_photo = models.ImageField(upload_to=outfit_photo_directory_path)
     outfit_desc = models.CharField(max_length=400)
     outfit_good = models.IntegerField(default=0)
     outfit_date = models.DateTimeField(default=timezone.now)
