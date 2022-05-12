@@ -1,4 +1,4 @@
-# Flagolor
+# Flagolor （コーデ投稿アプリ）
 ここから使えます<br>
 ※現在画像の表示ができない問題を対策中です<br>
 https://flagolor.herokuapp.com/post_outfit/
