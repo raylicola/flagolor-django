@@ -6,3 +6,4 @@ db-volumes/
 db.sqlite3
 post_outfit/migrations
 media/
+flagolor/secret.py
