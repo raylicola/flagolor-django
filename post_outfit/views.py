@@ -123,8 +123,11 @@ def delete(request, outfit_id):
 def profile_edit(request):
     add_account_obj = Account.objects.get(user__username=request.user.username)
     if (request.method=='POST'):
-        add_account = AddAccountForm(request.POST, instance=add_account_obj)
-        add_account.save()
+        add_account_form = AddAccountForm(request.POST, request.FILES, instance=add_account_obj)
+        if add_account_form.is_valid():
+            add_account = add_account_form.save(commit=False)
+            add_account.account_icon = request.FILES['account_icon']
+            add_account.save()
     params = {
         'add_account_form': AddAccountForm(instance=add_account_obj)
     }
