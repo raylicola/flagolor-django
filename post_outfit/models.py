@@ -25,7 +25,7 @@ class Account(models.Model):
     # プロフィール写真
     account_icon = models.ImageField(
         upload_to=account_icon_directory_path,
-        default='common/default.jpg',
+        default='common/icon_default.jpg',
         blank=True,
         null=True
         )
