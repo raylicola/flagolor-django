@@ -1,6 +1,6 @@
 # Flagolor （コーデ投稿アプリ）
 ここから使えます<br>
-※今のところHerokuの仕様で画像表示ができていません<br>
+※現在公開版では画像表示ができません<br>
 https://flagolor.herokuapp.com/post_outfit/
 ## コンセプト
 国旗×ファッション<br>
